@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/jquery.mobile.structure.css"/>
+    <link rel="stylesheet" href="css/jquery.mobile.theme.css"/>
+    <link  rel="stylesheet" href="css/home.css"/>
+    <script>
+        var userAgent = navigator.userAgent + '';
+        if (userAgent.indexOf('iPhone') > -1) {
+            document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+            var mobile_system = 'iphone';
+        } else if (userAgent.indexOf('Android') > -1) {
+            document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+            var mobile_system = 'android';
+        } else {
+            var mobile_system = '';
+        }
+    </script>
+
+    <script src="scripts/jquery.js"></script>
+    <!-- your scripts here -->
+
+    <script src="scripts/jquery.mobile.js"></script>
+
+    <title>app</title>
+</head>
+<body>
+<!-- <div data-role="page" id="landingPage" style="background: white">
+
+     <div data-role="header" style="text-shadow: none">
+         <h1>tutorial</h1>
+         <a href="index.html" data-role="button" data-icon="refresh" data-iconpos="notext" style="background: white;border: none;">Refresh</a>
+     </div><!-- /header -->
+<!-- <img src="img/download.png" />
+<div data-role="content" style="text-shadow: none">
+    <a href="#declareRegions" data-transition="flip">
+    <button>
+        Declare
+    </button> </a>
+    <br />
+    <a href="#results" data-transition="slide">
+    <button>
+        Results
+    </button> </a>
+    <br />
+    <button id="geolocationdata">geolocation</button>
+    <div id="divWatchMeMove">My Current Position</div>
+    <button id="clearWatchbtn">Reset</button>
+    <br />
+    <button id="capturePhoto">camera</button>	<br />
+      <div><center><img class="lazy" style="display:none;width:100%;height:100%;" id="smallImage" src="" /></center></div>
+          <br />
+      <video width="400" controls>
+          <source src="video.mp4" type="video/mp4">
+
+
+     </video>
+         <br />
+     <audio controls>
+
+            <source src="audio.mp3" type="audio/mpeg">
+
+      </audio>
+
+</div><!-- /content -->
+<!-- </div> --> <!-- /page -->
+
+<div data-role="page" id="landingPage" style="background: skyblue">
+    <div class="section center">
+        <div class="create-list-login-panel">
+            <h2 style="text-align: center; color: blue; font-family: cursive;">Ashpool</h2>
+            <form action="" method="post">
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <h5 style="text-align: left; color: white; font-family: monospace;">Username</h5>
+                        <input id="username" name="username" type="text" required>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <h5 style="text-align: left; color: white; font-family: monospace;">Password</h5>
+                        <input id="password" name="password" type="password" required>
+
+                    </div>
+                </div>
+
+                <div class="row center">
+                    <button id="loginButton" class="btn" type="submit" name="login">Login</button>
+
+                    <a href="#signUp" data-transition="slide"> Don't have an account</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div data-role="page" id="signUp" style="background: skyblue">
+    <div class="section center">
+        <div class="create-list-login-panel">
+            <div data-role="header" style="text-shadow: none">
+                <h1>Sign Up</h1>
+                <a href="#landingPage" data-role="button" data-icon="back" data-iconpos="notext"
+                   style="background: white;border: none;">Refresh</a>
+            </div>
+            <div id="landmark-1" data-landmark-id="1">
+                <form>
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <h5 style="text-align: left; color: white; font-family: monospace;">Firstname</h5>
+                            <input id="signUpFirstname" name="firstname" type="text" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <h5 style="text-align: left; color: white; font-family: monospace;">Lastname</h5>
+                            <input id="signUpLastname" name="lastname" type="text" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <h5 style="text-align: left; color: white; font-family: monospace;">Username</h5>
+                            <input id="signUpUsername" name="username" type="text" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <h5 style="text-align: left; color: white; font-family: monospace;">Phone number</h5>
+                            <input id="signUpPhoneNumber" name="phoneNumber" type="text" required>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <h5 style="text-align: left; color: white; font-family: monospace;">Password</h5>
+                            <input id="signUpPassword" name="password" type="password" required>
+
+                        </div>
+                    </div>
+
+                    <div class="row center">
+                        <button id="signUpButton" class="btn" type="submit" name="signUp">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div data-role="page" id="homepage" style="background: skyblue">
+    <div class="section center">
+        <div class="create-list-login-panel">
+            <div data-role="header" style="text-shadow: none">
+                <h1>Ashpool</h1>
+                <a href="#homepage" data-role="button" data-icon="refresh" data-iconpos="notext"
+                   style="background: white;border: none;">Refresh</a>
+            </div>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <form action="" method="GET">
+                <div class="row center">
+                    <a href="#createPool">
+                        <button  class="btn" type="submit" name="send">Create Pool</button>
+                    </a>
+                    <div class="spacer"></div>
+                        <button id="joinPoolButton" class="btn" type="submit" name="send">Join Pool</button>
+                    <div class="spacer"></div>
+                    <button id="poolsCreatedButton" class="btn" type="submit" name="send">Pools Created</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div data-role="page" id="createPool" style="background: skyblue">
+    <div class="section center">
+        <div class="create-list-login-panel">
+            <div data-role="header" style="text-shadow: none">
+                <h1>Create Pool</h1>
+                <a href="#homepage" data-role="button" data-icon="back" data-iconpos="notext"
+                   style="background: white;border: none;">Refresh</a>
+            </div>
+
+                <form>
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <h5 style="text-align: left; color: white; font-family: monospace;">Number of spots
+                                available</h5>
+                            <input id="spotsAvailable" name="spotsAvailable" type="number" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <h5 style="text-align: left; color: white; font-family: monospace;">Fare charge (Ghs)</h5>
+                            <input id="fare" name="fare" type="number" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <h5 style="text-align: left; color: white; font-family: monospace;">Date</h5>
+                            <input id="date" name="date" type="date" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <h5 style="text-align: left; color: white; font-family: monospace;">Destination</h5>
+                            <input id="destination" name="destination" type="text" required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row center">
+                        <button id="createPoolButton" class="btn" type="submit" name="createPool">Create pool</button>
+                    </div>
+                </form>
+
+        </div>
+
+    </div>
+</div>
+<div data-role="page" id="joinPool" style="background: skyblue">
+    <div class="section center">
+        <div class="create-list-login-panel">
+            <div data-role="header" style="text-shadow: none">
+                <h1>Join Pool</h1>
+                <a href="#homepage" data-role="button" data-icon="back" data-iconpos="notext"
+                   style="background: white;border: none;">Refresh</a>
+            </div>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <form action="" method="GET">
+                <div class="box" id="hello">
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div data-role="page" id="myPool" style="background: skyblue">
+    <div class="section center">
+        <div class="create-list-login-panel">
+            <div data-role="header" style="text-shadow: none">
+                <h1>My Pools</h1>
+                <a href="#homepage" data-role="button" data-icon="back" data-iconpos="notext"
+                   style="background: white;border: none;">Refresh</a>
+            </div>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <form action="" method="GET">
+                <div class="box" id="myPoolList">
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<div data-role="page" id="payOptions" style="background: skyblue">
+    <div class="section center">
+        <div class="create-list-login-panel">
+            <div data-role="header" style="text-shadow: none">
+                <h1>Pay Options</h1>
+                <a href="#homepage" data-role="button" data-icon="back" data-iconpos="notext"
+                   style="background: white;border: none;">Refresh</a>
+            </div>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <h5>How would you like to pay?</h5>
+            <div class="spacer"></div>
+            <form >
+
+                <input type="radio" name="mobileMoney" value="mobileMoney" id="payOpt1" />
+                <label for="payOpt1">Mobile Money</label>
+
+                <input type="radio" name="mobileMoney" value="mobileMoney" id="payOpt2" />
+                <label for="payOpt2">Cash</label>
+
+                <button >OK</button>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="scripts/platformOverrides.js"></script>
+<script type="text/javascript" src="scripts/index.js"></script>
+<script type="text/javascript" src="scripts/poolAjax.js"></script>
+
+</body>
+</html>
